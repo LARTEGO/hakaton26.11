@@ -1,5 +1,12 @@
 /* ============ FOODLINGO — логика прототипа ============ */
 
+/* Обёртка для эмодзи: оборачивает emoji-символы в <span class="emoji">,
+   чтобы они рендерились цветным emoji-шрифтом, а не «пустыми квадратиками» */
+function em(text) {
+  return String(text).replace(/[\u{1F000}-\u{1FAFF}\u{2190}-\u{21FF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{FE0F}\u{2049}\u{203C}]+/gu,
+    m => '<span class="emoji">' + m + '</span>');
+}
+
 /* ---------- ДАННЫЕ: уроки ---------- */
 const LESSONS = [
   {
@@ -164,19 +171,19 @@ function renderHome() {
     div.className = "map-item" + (unlocked ? "" : " locked");
     div.innerHTML = `
       <div class="map-dot ${done ? "dot-done" : isCurrent ? "dot-current" : "dot-locked"}">
-        ${done ? "✓" : isCurrent ? l.emoji : "🔒"}
+        ${em(done ? "✓" : isCurrent ? l.emoji : "🔒")}
       </div>
       <div><div class="map-name">${i+1}. ${l.name}</div>
-      <div class="map-sub">${done ? "Пройдено ✅" : isCurrent ? "Доступен сейчас ▶" : "Открой предыдущие уроки"}</div></div>`;
+      <div class="map-sub">${em(done ? "Пройдено ✅" : isCurrent ? "Доступен сейчас ▶" : "Открой предыдущие уроки")}</div></div>`;
     if (unlocked) div.addEventListener("click", () => startLesson(i));
     map.appendChild(div);
   });
 
   const allDone = state.completed.length === LESSONS.length;
-  document.getElementById("btn-continue").textContent = allDone ? "ПОВТОРИТЬ ЛЮБОЙ УРОК ♻" : "ПРОДОЛЖИТЬ УРОК ▶";
-  document.getElementById("speech").textContent = allDone
+  document.getElementById("btn-continue").innerHTML = em(allDone ? "ПОВТОРИТЬ ЛЮБОЙ УРОК ♻" : "ПРОДОЛЖИТЬ УРОК ▶");
+  document.getElementById("speech").innerHTML = em(allDone
     ? "Вау! Все уроки пройдены! Ты — мастер питания! 👑"
-    : ["Нажми «Продолжить» и получи немного XP! ⭐", "Каждый правильный ответ — +10 XP! 🔥", "Я верю в тебя! Давай один урокчик 🐸"][Math.floor(Math.random()*3)];
+    : ["Нажми «Продолжить» и получи немного XP! ⭐", "Каждый правильный ответ — +10 XP! 🔥", "Я верю в тебя! Давай один урокчик 🐸"][Math.floor(Math.random()*3)]);
 }
 
 document.getElementById("btn-continue").addEventListener("click", () => startLesson(nextLessonIndex()));
@@ -185,8 +192,8 @@ document.getElementById("btn-continue").addEventListener("click", () => startLes
 function startLesson(index) {
   currentLesson = LESSONS[index];
   currentQ = 0; sessionXP = 0; sessionMistakes = 0;
-  document.getElementById("lesson-title").textContent = currentLesson.emoji + " " + currentLesson.name;
-  document.getElementById("lesson-info").innerHTML = `<b>${currentLesson.emoji} Запомни:</b><br><br>${currentLesson.info}`;
+  document.getElementById("lesson-title").innerHTML = em(currentLesson.emoji + " " + currentLesson.name);
+  document.getElementById("lesson-info").innerHTML = em(`<b>${currentLesson.emoji} Запомни:</b><br><br>${currentLesson.info}`);
   show("lesson");
 }
 
@@ -250,8 +257,8 @@ document.getElementById("btn-check").addEventListener("click", () => {
     renderHearts();
   }
   fb.className = "feedback " + (good ? "good" : "bad");
-  icon.textContent = good ? "🎉" : "💡";
-  txt.textContent = good ? item.ok : item.no;
+  icon.innerHTML = em(good ? "🎉" : "💡");
+  txt.innerHTML = em(good ? item.ok : item.no);
   document.getElementById("btn-check").classList.add("hidden");
   document.getElementById("btn-quiz-next").classList.remove("hidden");
   save();
@@ -286,7 +293,7 @@ function finishLesson() {
   const badgeBox = document.getElementById("badge-unlocked");
   if (newBadges.length) {
     badgeBox.classList.remove("hidden");
-    badgeBox.innerHTML = "🥇 Новое достижение: " + newBadges.map(b => b.emoji + " «" + b.name + "»").join(", ");
+    badgeBox.innerHTML = em("🥇 Новое достижение: " + newBadges.map(b => b.emoji + " «" + b.name + "»").join(", "));
   } else badgeBox.classList.add("hidden");
 
   show("complete");
@@ -314,7 +321,7 @@ function renderProgress() {
     const got = state.badges.includes(b.id);
     const d = document.createElement("div");
     d.className = "badge" + (got ? "" : " locked");
-    d.innerHTML = `${b.emoji}<small>${b.name}</small>`;
+    d.innerHTML = em(`${b.emoji}<small>${b.name}</small>`);
     d.title = got ? "Получено!" : "Ещё не получено";
     bl.appendChild(d);
   });
@@ -325,7 +332,7 @@ function renderProgress() {
     const done = state.completed.includes(l.id);
     const d = document.createElement("div");
     d.className = "topic " + (done ? "done" : "todo");
-    d.innerHTML = `<span>${l.emoji} ${l.name}</span><span>${done ? "изучено" : "—"}</span>`;
+    d.innerHTML = em(`<span>${l.emoji} ${l.name}</span><span>${done ? "изучено" : "—"}</span>`);
     tl.appendChild(d);
   });
 }
@@ -344,7 +351,7 @@ function renderHearts() {
 }
 function popXP(n) {
   const el = document.getElementById("xp-pop");
-  el.textContent = "+" + n + " XP ⭐";
+  el.innerHTML = em("+" + n + " XP ⭐");
   el.classList.remove("hidden");
   el.style.animation = "none"; void el.offsetWidth; // перезапуск анимации
   el.style.animation = "";
