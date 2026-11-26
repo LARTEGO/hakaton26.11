@@ -12,17 +12,17 @@
   <!-- ===== ГЛАВНЫЙ ЭКРАН ===== -->
   <section class="screen active" id="screen-home">
     <header class="topbar">
-      <div class="logo"><span class="emoji">🥦</span> <b>FOODLINGO</b></div>
+      <div class="logo"><span class="logo-f">F</span> <b>FOODLINGO</b></div>
       <div class="stats-mini">
-        <span class="streak" title="Серия дней"><span class="emoji">🔥</span> <b id="home-streak">0</b></span>
-        <span class="hearts" title="Жизни"><span class="emoji">❤️</span> <b id="home-hearts">3</b></span>
+        <span class="streak" title="Серия дней"><span class="ico">С</span> <b id="home-streak">0</b></span>
+        <span class="hearts" title="Жизни"><span class="ico">Ж</span> <b id="home-hearts">3</b></span>
       </div>
     </header>
 
     <div class="hero">
-      <p class="greeting">Привет! Продолжим обучение? <span class="emoji">👋</span></p>
-      <div class="mascot" id="mascot"><span class="emoji">🐸</span></div>
-      <div class="speech-bubble" id="speech">Нажми «Продолжить» и получи немного XP! ⭐</div>
+      <p class="greeting">Привет! Продолжим обучение?</p>
+      <div class="mascot" id="mascot">F</div>
+      <div class="speech-bubble" id="speech">Нажми «Продолжить» и получи немного XP!</div>
 
       <div class="progress-card">
         <div class="progress-label">ТВОЙ ПРОГРЕСС</div>
@@ -32,11 +32,11 @@
 
       <div class="map" id="lesson-map"><!-- уроки генерируются JS --></div>
 
-      <button class="btn-primary big" id="btn-continue">ПРОДОЛЖИТЬ УРОК <span class="emoji">▶</span></button>
+      <button class="btn-primary big" id="btn-continue">ПРОДОЛЖИТЬ УРОК &gt;</button>
 
       <div class="footer-stats">
-        <span><span class="emoji">⭐</span> <b id="home-xp">0</b> XP</span>
-        <span><span class="emoji">🏆</span> Уровень <b id="home-level">1</b></span>
+        <span><span class="ico">О</span> <b id="home-xp">0</b> XP</span>
+        <span><span class="ico">У</span> Уровень <b id="home-level">1</b></span>
       </div>
     </div>
   </section>
@@ -44,23 +44,23 @@
   <!-- ===== ЭКРАН УРОКА ===== -->
   <section class="screen" id="screen-lesson">
     <header class="topbar">
-      <button class="close-btn" data-back><span class="emoji">✕</span></button>
+      <button class="close-btn" data-back>X</button>
       <div class="lesson-title" id="lesson-title">Урок</div>
-      <div class="hearts"><span class="emoji">❤️</span> <b id="lesson-hearts">3</b></div>
+      <div class="hearts"><span class="ico">Ж</span> <b id="lesson-hearts">3</b></div>
     </header>
     <div class="lesson-body">
-      <div class="mascot small"><span class="emoji">🐸</span></div>
+      <div class="mascot small">F</div>
       <div class="info-card" id="lesson-info"></div>
-      <button class="btn-primary big" id="btn-lesson-next">ДАЛЕЕ <span class="emoji">➜</span></button>
+      <button class="btn-primary big" id="btn-lesson-next">ДАЛЕЕ &gt;</button>
     </div>
   </section>
 
   <!-- ===== ЭКРАН ВИКТОРИНЫ ===== -->
   <section class="screen" id="screen-quiz">
     <header class="topbar">
-      <button class="close-btn" data-back><span class="emoji">✕</span></button>
+      <button class="close-btn" data-back>X</button>
       <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-fill"></div></div>
-      <div class="hearts"><span class="emoji">❤️</span> <b id="quiz-hearts">3</b></div>
+      <div class="hearts"><span class="ico">Ж</span> <b id="quiz-hearts">3</b></div>
     </header>
     <div class="quiz-body">
       <h2 class="question" id="quiz-question"></h2>
@@ -69,30 +69,30 @@
         <div class="feedback-icon" id="feedback-icon"></div>
         <div class="feedback-text" id="feedback-text"></div>
       </div>
-      <button class="btn-primary big check-btn hidden" id="btn-check">ПРОВЕРИТЬ <span class="emoji">✔</span></button>
-      <button class="btn-primary big continue-btn hidden" id="btn-quiz-next">ПРОДОЛЖИТЬ <span class="emoji">➜</span></button>
+      <button class="btn-primary big check-btn hidden" id="btn-check">ПРОВЕРИТЬ</button>
+      <button class="btn-primary big continue-btn hidden" id="btn-quiz-next">ПРОДОЛЖИТЬ &gt;</button>
     </div>
   </section>
 
   <!-- ===== ЭКРАН ЗАВЕРШЕНИЯ ===== -->
   <section class="screen" id="screen-complete">
     <div class="complete-body">
-      <div class="mascot big-mascot bounce"><span class="emoji">🐸</span></div>
-      <h1>Урок пройден! <span class="emoji">🎉</span></h1>
-      <div class="xp-award">+<span id="award-xp">0</span> XP <span class="emoji">⭐</span></div>
+      <div class="mascot big-mascot bounce">F</div>
+      <h1>Урок пройден!</h1>
+      <div class="xp-award">+<span id="award-xp">0</span> XP</div>
       <div class="award-row">
-        <div class="award-chip"><span class="emoji">🔥</span> Серия: <b id="award-streak">0</b> дн.</div>
-        <div class="award-chip"><span class="emoji">🏆</span> Уровень: <b id="award-level">1</b></div>
+        <div class="award-chip"><span class="ico">С</span> Серия: <b id="award-streak">0</b> дн.</div>
+        <div class="award-chip"><span class="ico">У</span> Уровень: <b id="award-level">1</b></div>
       </div>
       <div class="badge-unlocked hidden" id="badge-unlocked"></div>
-      <button class="btn-primary big" id="btn-finish">ОТЛИЧНО! <span class="emoji">✔</span></button>
+      <button class="btn-primary big" id="btn-finish">ОТЛИЧНО!</button>
     </div>
   </section>
 
   <!-- ===== ЭКРАН ПРОГРЕССА ===== -->
   <section class="screen" id="screen-progress">
     <header class="topbar">
-      <div class="logo"><span class="emoji">🏆</span> ТВОЙ ПРОГРЕСС</div>
+      <div class="logo"><span class="logo-f">F</span> ТВОЙ ПРОГРЕСС</div>
     </header>
     <div class="progress-body">
       <div class="level-card">
@@ -105,16 +105,16 @@
       </div>
 
       <div class="stat-grid">
-        <div class="stat-box"><div class="stat-num" id="prog-xp">0</div><div class="stat-lbl"><span class="emoji">⭐</span> XP</div></div>
-        <div class="stat-box"><div class="stat-num" id="prog-streak">0</div><div class="stat-lbl"><span class="emoji">🔥</span> Серия (дней)</div></div>
-        <div class="stat-box"><div class="stat-num" id="prog-lessons">0/6</div><div class="stat-lbl"><span class="emoji">📖</span> Уроки</div></div>
-        <div class="stat-box"><div class="stat-num" id="prog-hearts">3</div><div class="stat-lbl"><span class="emoji">❤️</span> Жизни</div></div>
+        <div class="stat-box"><div class="stat-num" id="prog-xp">0</div><div class="stat-lbl"><span class="ico">О</span> XP</div></div>
+        <div class="stat-box"><div class="stat-num" id="prog-streak">0</div><div class="stat-lbl"><span class="ico">С</span> Серия (дней)</div></div>
+        <div class="stat-box"><div class="stat-num" id="prog-lessons">0/6</div><div class="stat-lbl"><span class="ico">У</span> Уроки</div></div>
+        <div class="stat-box"><div class="stat-num" id="prog-hearts">3</div><div class="stat-lbl"><span class="ico">Ж</span> Жизни</div></div>
       </div>
 
-      <h3 class="section-title"><span class="emoji">🥇</span> Достижения</h3>
+      <h3 class="section-title">Достижения</h3>
       <div class="badges" id="badges-list"></div>
 
-      <h3 class="section-title"><span class="emoji">🗺️</span> Изученные темы</h3>
+      <h3 class="section-title">Изученные темы</h3>
       <div class="topics" id="topics-list"></div>
 
       <button class="btn-ghost" id="btn-reset">Сбросить прогресс (для демо)</button>
@@ -123,15 +123,21 @@
 
   <!-- ===== НИЖНЯЯ НАВИГАЦИЯ ===== -->
   <nav class="bottom-nav" id="nav">
-    <button class="nav-btn active" data-screen="home"><span class="emoji">🏠</span><span>Главная</span></button>
-    <button class="nav-btn" data-screen="lesson"><span class="emoji">📖</span><span>Урок</span></button>
-    <button class="nav-btn" data-screen="quiz"><span class="emoji">❓</span><span>Викторина</span></button>
-    <button class="nav-btn" data-screen="progress"><span class="emoji">🏆</span><span>Прогресс</span></button>
+    <button class="nav-btn active" data-screen="home"><span class="ico">Г</span><span>Главная</span></button>
+    <button class="nav-btn" data-screen="lesson"><span class="ico">У</span><span>Урок</span></button>
+    <button class="nav-btn" data-screen="quiz"><span class="ico">?</span><span>Викторина</span></button>
+    <button class="nav-btn" data-screen="progress"><span class="ico">П</span><span>Прогресс</span></button>
   </nav>
 
   <!-- XP всплывашка -->
-  <div class="xp-pop hidden" id="xp-pop">+10 XP <span class="emoji">⭐</span></div>
+  <div class="xp-pop hidden" id="xp-pop">+10 XP</div>
 </div>
 <script src="app.js"></script>
 </body>
 </html>
+EOF
+echo done
+
+cd /workspace && python3 << 'PYEOF'
+import re
+src = open('app.js', encoding='utf-8').read()
