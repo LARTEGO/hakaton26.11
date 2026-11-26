@@ -1,1 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🥦 Foodlingo — Учись питаться лучше, играя!</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app" id="app">
 
+  <!-- ===== ГЛАВНЫЙ ЭКРАН ===== -->
+  <section class="screen active" id="screen-home">
+    <header class="topbar">
+      <div class="logo">🥦 <b>FOODLINGO</b></div>
+      <div class="stats-mini">
+        <span class="streak" title="Серия дней">🔥 <b id="home-streak">0</b></span>
+        <span class="hearts" title="Жизни">❤️ <b id="home-hearts">3</b></span>
+      </div>
+    </header>
+
+    <div class="hero">
+      <p class="greeting">Привет! Продолжим обучение? 👋</p>
+      <div class="mascot" id="mascot">🐸</div>
+      <div class="speech-bubble" id="speech">Нажми «Продолжить» и получи немного XP! ⭐</div>
+
+      <div class="progress-card">
+        <div class="progress-label">ТВОЙ ПРОГРЕСС</div>
+        <div class="progress-bar"><div class="progress-fill" id="home-progress-fill"></div></div>
+        <div class="progress-percent" id="home-progress-percent">0%</div>
+      </div>
+
+      <div class="map" id="lesson-map"><!-- уроки генерируются JS --></div>
+
+      <button class="btn-primary big" id="btn-continue">ПРОДОЛЖИТЬ УРОК ▶</button>
+
+      <div class="footer-stats">
+        <span>⭐ <b id="home-xp">0</b> XP</span>
+        <span>🏆 Уровень <b id="home-level">1</b></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ЭКРАН УРОКА ===== -->
+  <section class="screen" id="screen-lesson">
+    <header class="topbar">
+      <button class="close-btn" data-back>✕</button>
+      <div class="lesson-title" id="lesson-title">Урок</div>
+      <div class="hearts">❤️ <b id="lesson-hearts">3</b></div>
+    </header>
+    <div class="lesson-body">
+      <div class="mascot small">🐸</div>
+      <div class="info-card" id="lesson-info"></div>
+      <button class="btn-primary big" id="btn-lesson-next">ДАЛЕЕ ➜</button>
+    </div>
+  </section>
+
+  <!-- ===== ЭКРАН ВИКТОРИНЫ ===== -->
+  <section class="screen" id="screen-quiz">
+    <header class="topbar">
+      <button class="close-btn" data-back>✕</button>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-fill"></div></div>
+      <div class="hearts">❤️ <b id="quiz-hearts">3</b></div>
+    </header>
+    <div class="quiz-body">
+      <h2 class="question" id="quiz-question"></h2>
+      <div class="answers" id="quiz-answers"></div>
+      <div class="feedback hidden" id="quiz-feedback">
+        <div class="feedback-icon" id="feedback-icon"></div>
+        <div class="feedback-text" id="feedback-text"></div>
+      </div>
+      <button class="btn-primary big check-btn hidden" id="btn-check">ПРОВЕРИТЬ ✔</button>
+      <button class="btn-primary big continue-btn hidden" id="btn-quiz-next">ПРОДОЛЖИТЬ ➜</button>
+    </div>
+  </section>
+
+  <!-- ===== ЭКРАН ЗАВЕРШЕНИЯ ===== -->
+  <section class="screen" id="screen-complete">
+    <div class="complete-body">
+      <div class="mascot big-mascot bounce">🐸</div>
+      <h1>Урок пройден! 🎉</h1>
+      <div class="xp-award">+<span id="award-xp">0</span> XP ⭐</div>
+      <div class="award-row">
+        <div class="award-chip">🔥 Серия: <b id="award-streak">0</b> дн.</div>
+        <div class="award-chip">🏆 Уровень: <b id="award-level">1</b></div>
+      </div>
+      <div class="badge-unlocked hidden" id="badge-unlocked"></div>
+      <button class="btn-primary big" id="btn-finish">ОТЛИЧНО! ✔</button>
+    </div>
+  </section>
+
+  <!-- ===== ЭКРАН ПРОГРЕССА ===== -->
+  <section class="screen" id="screen-progress">
+    <header class="topbar">
+      <div class="logo">🏆 ТВОЙ ПРОГРЕСС</div>
+    </header>
+    <div class="progress-body">
+      <div class="level-card">
+        <div class="level-badge" id="prog-level-badge">1</div>
+        <div class="level-info">
+          <div class="level-name">Уровень <b id="prog-level">1</b></div>
+          <div class="progress-bar slim"><div class="progress-fill" id="prog-xp-fill"></div></div>
+          <div class="muted" id="prog-xp-text">0 / 100 XP до следующего уровня</div>
+        </div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-box"><div class="stat-num" id="prog-xp">0</div><div class="stat-lbl">⭐ XP</div></div>
+        <div class="stat-box"><div class="stat-num" id="prog-streak">0</div><div class="stat-lbl">🔥 Серия (дней)</div></div>
+        <div class="stat-box"><div class="stat-num" id="prog-lessons">0/6</div><div class="stat-lbl">📖 Уроки</div></div>
+        <div class="stat-box"><div class="stat-num" id="prog-hearts">3</div><div class="stat-lbl">❤️ Жизни</div></div>
+      </div>
+
+      <h3 class="section-title">🥇 Достижения</h3>
+      <div class="badges" id="badges-list"></div>
+
+      <h3 class="section-title">🗺️ Изученные темы</h3>
+      <div class="topics" id="topics-list"></div>
+
+      <button class="btn-ghost" id="btn-reset">Сбросить прогресс (для демо)</button>
+    </div>
+  </section>
+
+  <!-- ===== НИЖНЯЯ НАВИГАЦИЯ ===== -->
+  <nav class="bottom-nav" id="nav">
+    <button class="nav-btn active" data-screen="home">🏠<span>Главная</span></button>
+    <button class="nav-btn" data-screen="lesson">📖<span>Урок</span></button>
+    <button class="nav-btn" data-screen="quiz">❓<span>Викторина</span></button>
+    <button class="nav-btn" data-screen="progress">🏆<span>Прогресс</span></button>
+  </nav>
+
+  <!-- XP всплывашка -->
+  <div class="xp-pop hidden" id="xp-pop">+10 XP ⭐</div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
