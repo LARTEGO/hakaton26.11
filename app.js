@@ -3,12 +3,12 @@
 /* ---------- ДАННЫЕ: уроки ---------- */
 const LESSONS = [
   {
-    id: "sugar", emoji: "🥤", name: "Сахар и напитки",
+    id: "sugar", emoji: "S", name: "Сахар и напитки",
     info: "Многие сладкие напитки содержат много добавленного сахара. Один большой сладкий лимонад может покрыть всю дневную норму сахара за раз. Вода и напитки без добавленного сахара — отличные варианты на каждый день!",
     quiz: [
       { q: "Сколько примерно кубиков сахара может содержаться в бутылке сладкой газировки объёмом 500 мл?",
         a: ["1–2", "5–6", "10–12"], correct: 2,
-        ok: "🎉 Правильно! В некоторых напитках такого объёма действительно может быть около 10–12 кубиков сахара. Точное количество зависит от напитка — проверяй этикетку!",
+        ok: "Правильно! В некоторых напитках такого объёма действительно может быть около 10–12 кубиков сахара. Точное количество зависит от напитка — проверяй этикетку!",
         no: "Почти! В некоторых напитках такого объёма бывает около 10–12 кубиков сахара. Проверяй этикетку — там всё написано." },
       { q: "Что помогает сократить сахар в течение дня?",
         a: ["Заменить часть сладких напитков на воду", "Полностью запретить себе любую еду", "Пропускать приёмы пищи"], correct: 0,
@@ -17,7 +17,7 @@ const LESSONS = [
     ]
   },
   {
-    id: "fastfood", emoji: "🍔", name: "Фастфуд осознанно",
+    id: "fastfood", emoji: "F", name: "Фастфуд осознанно",
     info: "Фастфуд — не враг. Иногда съесть бургер — это нормально! Осознанный выбор: добавить овощи, выбрать воду вместо сладкого напитка, не есть «на автомате». Дело не в запретах, а в понимании, что тебе подходит.",
     quiz: [
       { q: "Как сделать приём фастфуда чуть более сбалансированным?",
@@ -31,12 +31,12 @@ const LESSONS = [
     ]
   },
   {
-    id: "plate", emoji: "🥗", name: "Собираем тарелку",
+    id: "plate", emoji: "T", name: "Собираем тарелку",
     info: "Правило тарелки: половина — овощи и фрукты, четверть — белки (мясо, рыба, бобовые, яйца), четверть — гарниры (крупы, картофель, паста). Разнообразие важнее идеальных продуктов!",
     quiz: [
       { q: "Сколько места на «здоровой тарелке» занимают овощи и фрукты?",
         a: ["Около четверти", "Около половины", " Совсем немного"], correct: 1,
-        ok: "Правильно! Половина тарелки — овощи и фрукты. 🥦🍅",
+        ok: "Правильно! Половина тарелки — овощи и фрукты.",
         no: "Немного неточно: ориентир — половина тарелки овощей и фруктов." },
       { q: "Что относится к белкам?",
         a: ["Конфеты и печенье", "Бобовые, яйца, рыба", "Чай и вода"], correct: 1,
@@ -45,7 +45,7 @@ const LESSONS = [
     ]
   },
   {
-    id: "habits", emoji: "🧠", name: "Голод и привычки",
+    id: "habits", emoji: "H", name: "Голод и привычки",
     info: "Мы едим не только когда голодны — иногда от скуки, стресса или просто по привычке. Попробуй вопрос: «Я бы съел яблоко прямо сейчас?» Если да — это голод. Если нет — скорее всего, эмоция. Это не плохо, просто полезно замечать.",
     quiz: [
       { q: "«Тест с яблоком» помогает понять…",
@@ -59,7 +59,7 @@ const LESSONS = [
     ]
   },
   {
-    id: "water", emoji: "💧", name: "Вода",
+    id: "water", emoji: "W", name: "Вода",
     info: "Вода участвует почти во всём: от концентрации на уроках до настроения. Лёгкая жажда часто маскируется под усталость или голод. Носи бутылку с собой — маленький шаг, большой эффект.",
     quiz: [
       { q: "Что часто маскируется под усталость или лёгкий голод?",
@@ -73,7 +73,7 @@ const LESSONS = [
     ]
   },
   {
-    id: "shop", emoji: "🏪", name: "Выбор в магазине",
+    id: "shop", emoji: "M", name: "Выбор в магазине",
     info: "Этикетка — твой друг. Смотрите состав, а не красивые надписи «ФИТНЕС» и «БИО» на упаковке. Чем короче список ингредиентов, тем чаще продукт ближе к настоящей еде. Сахар прячется под именами: сироп, глюкоза, мальтодекстрин.",
     quiz: [
       { q: "На что в первую очередь смотреть при выборе продукта?",
@@ -89,12 +89,12 @@ const LESSONS = [
 ];
 
 const BADGES = [
-  { id: "first",   emoji: "🌱", name: "Первый шаг",     cond: s => s.completed.length >= 1 },
-  { id: "xp100",   emoji: "⚡", name: "100 XP",         cond: s => s.xp >= 100 },
-  { id: "three",   emoji: "🔥", name: "3 урока",        cond: s => s.completed.length >= 3 },
-  { id: "perfect", emoji: "💎", name: "Без ошибок",     cond: s => s.perfectOnce },
-  { id: "all",     emoji: "👑", name: "Все уроки",      cond: s => s.completed.length >= LESSONS.length },
-  { id: "lvl3",    emoji: "🏆", name: "Уровень 3",      cond: s => level(s.xp) >= 3 },
+  { id: "first",   emoji: "1", name: "Первый шаг",     cond: s => s.completed.length >= 1 },
+  { id: "xp100",   emoji: "X", name: "100 XP",         cond: s => s.xp >= 100 },
+  { id: "three",   emoji: "3", name: "3 урока",        cond: s => s.completed.length >= 3 },
+  { id: "perfect", emoji: "P", name: "Без ошибок",     cond: s => s.perfectOnce },
+  { id: "all",     emoji: "A", name: "Все уроки",      cond: s => s.completed.length >= LESSONS.length },
+  { id: "lvl3",    emoji: "L", name: "Уровень 3",      cond: s => level(s.xp) >= 3 },
 ];
 
 const XP_PER_RIGHT = 10;
@@ -164,19 +164,19 @@ function renderHome() {
     div.className = "map-item" + (unlocked ? "" : " locked");
     div.innerHTML = `
       <div class="map-dot ${done ? "dot-done" : isCurrent ? "dot-current" : "dot-locked"}">
-        ${done ? "✓" : isCurrent ? l.emoji : "🔒"}
+        ${done ? "OK" : isCurrent ? l.emoji : "\u0417"}
       </div>
       <div><div class="map-name">${i+1}. ${l.name}</div>
-      <div class="map-sub">${done ? "Пройдено ✅" : isCurrent ? "Доступен сейчас ▶" : "Открой предыдущие уроки"}</div></div>`;
+      <div class="map-sub">${done ? "Пройдено" : isCurrent ? "Доступен сейчас >" : "Открой предыдущие уроки"}</div></div>`;
     if (unlocked) div.addEventListener("click", () => startLesson(i));
     map.appendChild(div);
   });
 
   const allDone = state.completed.length === LESSONS.length;
-  document.getElementById("btn-continue").textContent = allDone ? "ПОВТОРИТЬ ЛЮБОЙ УРОК ♻" : "ПРОДОЛЖИТЬ УРОК ▶";
+  document.getElementById("btn-continue").textContent = allDone ? "ПОВТОРИТЬ ЛЮБОЙ УРОК" : "ПРОДОЛЖИТЬ УРОК";
   document.getElementById("speech").textContent = allDone
-    ? "Вау! Все уроки пройдены! Ты — мастер питания! 👑"
-    : ["Нажми «Продолжить» и получи немного XP! ⭐", "Каждый правильный ответ — +10 XP! 🔥", "Я верю в тебя! Давай один урокчик 🐸"][Math.floor(Math.random()*3)];
+    ? "Вау! Все уроки пройдены! Ты — мастер питания!"
+    : ["Нажми «Продолжить» и получи немного XP!", "Каждый правильный ответ — +10 XP!", "Я верю в тебя! Давай один урокчик"][Math.floor(Math.random()*3)];
 }
 
 document.getElementById("btn-continue").addEventListener("click", () => startLesson(nextLessonIndex()));
@@ -250,7 +250,7 @@ document.getElementById("btn-check").addEventListener("click", () => {
     renderHearts();
   }
   fb.className = "feedback " + (good ? "good" : "bad");
-  icon.textContent = good ? "🎉" : "💡";
+  icon.textContent = good ? "OK" : "!";
   txt.textContent = good ? item.ok : item.no;
   document.getElementById("btn-check").classList.add("hidden");
   document.getElementById("btn-quiz-next").classList.remove("hidden");
@@ -286,7 +286,7 @@ function finishLesson() {
   const badgeBox = document.getElementById("badge-unlocked");
   if (newBadges.length) {
     badgeBox.classList.remove("hidden");
-    badgeBox.innerHTML = "🥇 Новое достижение: " + newBadges.map(b => b.emoji + " «" + b.name + "»").join(", ");
+    badgeBox.innerHTML = "<i class=\"ic ic-medal\">D</i> Новое достижение: " + newBadges.map(b => b.emoji + " «" + b.name + "»").join(", ");
   } else badgeBox.classList.add("hidden");
 
   show("complete");
@@ -314,7 +314,7 @@ function renderProgress() {
     const got = state.badges.includes(b.id);
     const d = document.createElement("div");
     d.className = "badge" + (got ? "" : " locked");
-    d.innerHTML = `${b.emoji}<small>${b.name}</small>`;
+    d.innerHTML = `<span class="badge-letter">${b.emoji}</span><small>${b.name}</small>`;
     d.title = got ? "Получено!" : "Ещё не получено";
     bl.appendChild(d);
   });
@@ -344,7 +344,7 @@ function renderHearts() {
 }
 function popXP(n) {
   const el = document.getElementById("xp-pop");
-  el.textContent = "+" + n + " XP ⭐";
+  el.textContent = "+" + n + " XP";
   el.classList.remove("hidden");
   el.style.animation = "none"; void el.offsetWidth; // перезапуск анимации
   el.style.animation = "";
