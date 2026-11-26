@@ -122,9 +122,9 @@ body { background: linear-gradient(180deg, #eafff2, var(--blue-bg)); min-height:
 
 .topics { display: flex; flex-direction: column; gap: 8px; }
 .topic { background: var(--white); border-radius: 12px; padding: 10px 14px; font-weight: 700; box-shadow: var(--shadow); display: flex; justify-content: space-between; }
-.topic.done::before { content: "✅"; margin-right: 8px; }
+.topic.done::before { content: "OK"; margin-right: 8px; font-weight: 800; color: var(--green-dark); }
 .topic.todo { opacity: .5; }
-.topic.todo::before { content: "⬜"; margin-right: 8px; }
+.topic.todo::before { content: "\25CB"; margin-right: 8px; }
 
 /* --- нижняя навигация --- */
 .bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 480px; display: flex; background: var(--white); border-top: 2px solid #eee; z-index: 10; }
@@ -140,3 +140,27 @@ body { background: linear-gradient(180deg, #eafff2, var(--blue-bg)); min-height:
   body { background: radial-gradient(circle at 20% 20%, #eafff2, var(--blue-bg)); }
   .app { border-left: 1px solid #ddd; border-right: 1px solid #ddd; background: rgba(255,255,255,.35); }
 }
+
+/* --- буквенные иконки вместо эмодзи --- */
+.logo-mark {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border-radius: 8px;
+  background: var(--green-dark); color: #fff;
+  font-weight: 900; font-size: 18px; margin-right: 4px;
+}
+.ic {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 20px; height: 20px; border-radius: 50%;
+  font-style: normal; font-weight: 900; font-size: 12px;
+  color: #fff; vertical-align: middle;
+}
+.ic-fire   { background: #ff7a3c; } /* серия дней */
+.ic-heart  { background: #e63b56; } /* жизни */
+.ic-star   { background: #f5b301; } /* XP */
+.ic-trophy { background: #d9a406; } /* уровень / достижения */
+.ic-medal  { background: #d9a406; }
+.badge-letter {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 100%; height: 26px; font-weight: 900; color: var(--green-dark);
+}
+.mascot { color: var(--green-dark); font-weight: 900; }
