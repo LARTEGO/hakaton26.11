@@ -155,7 +155,6 @@ body { background: linear-gradient(180deg, #eafff2, var(--blue-bg)); min-height:
   color: #fff; vertical-align: middle;
 }
 .ic-fire   { background: #ff7a3c; } /* серия дней */
-.ic-heart  { background: #e63b56; } /* жизни */
 .ic-star   { background: #f5b301; } /* XP */
 .ic-trophy { background: #d9a406; } /* уровень / достижения */
 .ic-medal  { background: #d9a406; }
