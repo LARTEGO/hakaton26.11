@@ -9,7 +9,17 @@
   --white: #ffffff;
   --shadow: 0 4px 0 rgba(0,0,0,.12);
 }
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: "Nunito", "Segoe UI", Arial, sans-serif; }
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: "Nunito", "Segoe UI", "Segoe UI Emoji", "Apple Color Emoji", "Android Emoji", "EmojiSymbols", "Symbola", "Twemoji Mozilla", "FreeSans", Arial, sans-serif; }
+
+/* Эмодзи всегда рендерим специальным шрифтом, чтобы вместо них не было «пустых квадратиков» */
+.emoji {
+  font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji",
+               "Android Emoji", "EmojiSymbols", "Symbola", "Twemoji Mozilla",
+               "FreeSans", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+}
 body { background: linear-gradient(180deg, #eafff2, var(--blue-bg)); min-height: 100vh; color: var(--ink); }
 
 .app { max-width: 480px; margin: 0 auto; min-height: 100vh; display: flex; flex-direction: column; position: relative; padding-bottom: 76px; }
